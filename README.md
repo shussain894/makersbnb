@@ -1,7 +1,7 @@
 makersbnb challenge
 =================
 
-This week in Makers, we were tasked with building a 'airbnb' clone.
+This week in Makers, we were tasked with building an 'airbnb' clone.
 
 ## How to use
 
