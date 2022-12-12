@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link type="text/css" rel="stylesheet" href="/style.css" />
+  </head>
+    <% if @session == nil %>
+      <a href='/login' class='log_button'>login</a>
+    <% else %>
+    <a href='/logout' class='log_button'>logout</a>
+    <a href='/account' class='log_button'>account</a>
+    <a class='list_button' href="/spaces/new">list a new space? </a>
+    <% end %>
+    <a href='/spaces' class='log_button'>spaces</a>
+
+  
+  <div class="header">
+  <h1>Book a Space!</h1>
+  </div>
+  <br /><h2> These are the available spaces:</h2>
+ 
+  <% @spaces.each do |space|%>
+  <div class="spaces_box">
+    <div>
+      <a class="hyperlink" href="/spaces/<%=space.id%>">
+      <span style="font-weight:900">Name:</span> <%= space.name %><br />
+      <span style="font-weight:900">Description:</span> <%= space.description %><br />
+      <span style="font-weight:900">Price:</span> £<%= "%.2f" % [space.price] %><br />
+      <span style="font-weight:900">Available from:</span> <%= space.start_date %> <span style="font-weight:900">until:</span> <%= space.end_date %><br />
+      </a>
+    </div>
+  </div>
+  <% end %>
+  
+
+</html>
+    
+

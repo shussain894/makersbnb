@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link type="text/css" rel="stylesheet" href="/style.css" />
+  </head>
+    <% if @session == nil %>
+      <a href='/login' class='log_button'>login</a>
+    <% else %>
+      <a href='/logout' class='log_button'>logout</a>
+    <% end %>
+    <a href='/spaces' class='log_button'>spaces</a>
+    <a href='/account' class='log_button'>account</a>
+    <a class='list_button' href="/spaces/new">list a new space? </a>
+
+  <body>
+    <div class="header">
+      <h2> <%=@user.name%>'s Request Page </h2>
+    </div>
+
+    <div class="request_box">
+      <h2>Requests I've Made:</h2>
+
+      <br /><% @requests_made.each do |request| %>
+        <% space = @space_repo.find_by_id(request.space_id) %>
+        <div>
+          <%= space.name %>
+          <%= request.date %>
+          <%= request.status %>
+        </div>
+      <%end%>
+    </div>
+
+    <div class="request_box_2">
+      <h2>Requests I've Received:</h2>
+
+      <br /><% @requests_received.each do |request| %>
+        <% space = @space_repo.find_by_id(request.space_id) %>
+        <% if request.status == "Pending" %>
+          <a href="requests/<%= request.id %>">
+            <div class="hyperlink">
+              <%= space.name %>
+              <%= request.date %>
+              <%= request.status %>
+            </div>
+          </a>
+        <% end %>
+      <%end%>
+    </div>
+
+  </body>
+</html>

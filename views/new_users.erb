@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link type="text/css" rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <% if @session == nil %>
+      <a href='/login' class='log_button'>login</a>
+    <% else %>
+      <a href='/logout' class='log_button'>logout</a>
+    <% end %>
+
+
+    <div class="header">
+    <h1>sign up to makersbnb!</h1>
+    </div>
+
+    <form class="form__login" method="POST" action="/users">
+    
+    <div class="container">
+      <div class="centered-element">
+        <label for='name_id'> </label>
+        <input type="text" placeholder="Full name" id="name_id" name="name" />
+        <label for='email_address'> </label>
+        <input type="email" placeholder="Email" id='email_address' name="email" />
+        <label for='password_id'></label>
+        <input type="password" placeholder="Password" id="password_id" name="password" />
+        <input type="submit" class="input__signup" />
+      </div>
+    </div>
+    </form>
+  </body>
+</html>

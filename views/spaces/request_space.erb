@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tahoma:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link type="text/css" rel="stylesheet" href="/style.css" />
+  </head>
+    <% if @session == nil %>
+      <a href='/login' class='log_button'>login</a>
+    <% else %>
+      <a href='/logout' class='log_button'>logout</a>
+    <% end %>
+    <a href='/spaces' class='log_button'>spaces</a>
+    <a href='/account' class='log_button'>account</a>
+
+
+  <body>
+    <div class="header">
+    <h1> Space Booking Page! </h1>
+    </div>
+    <form method="POST" action="/request">
+
+    <div class="outer">
+      <div class="middle">
+        <div class="inner">
+          <div class="header">
+          <h2> <%= @space.name %> </h2>
+          </div>
+          <br /><span style="font-weight:900">Description:</span> <%= @space.description %><br />
+          <br /><span style="font-weight:900">Price:</span> £<%= "%.2f" % [@space.price] %><br />
+          <label for="date"><span style="font-weight:900">Select a date:</span> </label>
+          <input type="date" name="date" id="date" /><br />
+          <input type="hidden" name="space_id" value="<%=@space.id%>" /><br />
+          <input type="submit" value="submit your request!" class="input__signup"/>
+        </div>
+      </div>
+    </div>
+    </form>
+  </body>
+</html>
